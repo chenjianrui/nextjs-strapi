@@ -1,10 +1,20 @@
 import Header from 'components/Header'
+import { ThemeProvider } from 'emotion-theming'
+import GlobalStyles from 'components/GlobalStyles/GlobalStyles'
+const theme = {
+  color: {
+    primary: '#ff0000'
+  }
+}
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Header />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Header />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 }
