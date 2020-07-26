@@ -1,12 +1,19 @@
 import styled from '@emotion/styled'
+import { Flex, Box } from 'reflexbox'
+import Link from 'next/link'
+
+import Navigation from 'components/Navigation'
 
 const HeaderStyled = styled.header`
   background: #efefef;
   padding: 20px;
 
   .logo {
-    display: flex;
-    align-items: center;
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
 
     .logo-text {
       color: #333333;
@@ -17,15 +24,22 @@ const HeaderStyled = styled.header`
   }
 `
 
-export default function Header(){
+export default function Header({ navigation }){
   return (
     <HeaderStyled>
-      <div className='container'>
-        <div className='logo'>
-          <img src='/images/logo.svg' alt='Sites logo'/>
-          <span className='logo-text'>Next Movies</span>
-        </div>
-      </div>
+      <Box variant='container'>
+        <Flex justifyContent='space-between' alignItems='center'>
+          <div className='logo'>
+            <Link href='/'>
+              <a>
+                <img src='/images/logo.svg' alt='Sites logo'/>
+                <span className='logo-text'>Next Movies</span>
+              </a>
+            </Link>
+          </div>
+          <Navigation navigation={navigation}/>
+        </Flex>
+      </Box>
     </HeaderStyled>
   )
 }
