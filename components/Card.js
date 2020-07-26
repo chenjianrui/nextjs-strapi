@@ -18,7 +18,7 @@ const Card = ({ movie }) => {
 }
 
 const CardStyle = styled.div`
-  width: 400px;
+  width: 100%;
   border: 1px solid #ccc;
   margin-top: 50px;
   border-radius: 20px;
