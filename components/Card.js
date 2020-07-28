@@ -3,14 +3,22 @@ import Link from 'next/link'
 
 const Card = ({ movie }) => {
   const { API_URL } = process.env
-  const { url } = movie.poster
   const { title, description, slug } = movie
+  if(!movie.poster){
+    movie.poster = {}
+    movie.poster.url = null
+  }
+  const { url } = movie.poster
+  if(!movie.genre){
+    movie.genre = {}
+    movie.genre.slug = 'uncategorised'
+  }
   const { slug: slugByGenre } = movie.genre
   return (
     <CardStyle>
-      <div className='poster'>
+      { url !== null ? <div className='poster'>
         <img src={`${API_URL}${url}`}/>
-      </div>
+      </div> : null}
       <div className='body'>
         <h3>{ title }</h3>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
