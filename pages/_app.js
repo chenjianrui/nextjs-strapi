@@ -3,10 +3,13 @@ import { ThemeProvider } from 'emotion-theming'
 import GlobalStyles from 'components/GlobalStyles/GlobalStyles'
 import theme from 'components/theme/theme'
 import getConfig from 'next/config'
+import { DefaultSeo } from 'next-seo'
 
+import SEO from '../next-seo.config'
 function MyApp({ Component, pageProps, navigation }) {
   return (
     <>
+      <DefaultSeo {...SEO}/>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Header navigation={navigation}/>
